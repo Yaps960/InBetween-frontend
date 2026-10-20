@@ -1,0 +1,31 @@
+
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background: darkslateblue;
+}
+
+.menu-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-button span {
+  display: block;
+  width: 20px;
+  height: 3px;
+  background: whitesmoke;
+}
+
+h1 {
+	color: whitesmoke
+}

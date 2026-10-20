@@ -1,0 +1,20 @@
+
+<div class="menu-backdrop" (click)="closeMenu.emit()">
+  <aside
+    class="sidebar"
+    aria-label="Navigation menu"
+    (click)="$event.stopPropagation()"
+  >
+    <button
+      class="close-button"
+      type="button"
+      aria-label="Close menu"
+      (click)="closeMenu.emit()"
+    >
+      ×
+    </button>
+
+    <nav>
+    </nav>
+  </aside>
+</div>

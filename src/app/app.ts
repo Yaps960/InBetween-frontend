@@ -1,9 +1,12 @@
 import {Component} from '@angular/core';
+import { Home } from './home/home';
 
 @Component({
   selector: 'app-root',
-  imports: [],
-  template: ` <h1>InBetween</h1> `,
+  imports: [Home],
+  template: `
+    <app-home />
+  `,
   styleUrls: ['./app.css'],
 })
 export class App {

@@ -1,0 +1,55 @@
+
+.friends-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 88px;
+  z-index: 15;
+  width: min(300px, calc(100vw - 32px));
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
+  overflow: hidden;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.panel-header button {
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.friends-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.friend-item {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: white;
+  text-align: left;
+  cursor: pointer;
+}
+
+.friend-item:hover {
+  background: #f5f5f5;
+}

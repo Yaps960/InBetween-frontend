@@ -1,0 +1,23 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.home-content {
+  min-height: calc(100vh - 60px);
+}
+
+.friends-toggle {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background: white;
+  color: #222;
+  cursor: pointer;
+  z-index: 10;
+}

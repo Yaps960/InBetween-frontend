@@ -1,0 +1,31 @@
+
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: rgb(0 0 0 / 20%);
+}
+
+.sidebar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: min(280px, 85vw);
+  padding: 16px;
+  background: white;
+  box-shadow: 2px 0 12px rgb(0 0 0 / 10%);
+}
+
+.close-button {
+  display: block;
+  margin-left: auto;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+nav {
+  margin-top: 16px;
+}
