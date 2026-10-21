@@ -3,7 +3,15 @@
   height: 60px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 24px;
   background: darkslateblue;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .menu-button {
@@ -27,5 +35,72 @@
 }
 
 h1 {
-	color: whitesmoke
+  margin: 0;
+	color: whitesmoke;
+  font-size: 22px;
+}
+
+.header-search {
+  display: flex;
+  flex: 1;
+  height: 24px;
+  max-width: 500px;
+  border-radius: 3px;
+  margin: 0 auto;
+  background-color: aliceblue;
+}
+
+.header-search input {
+  flex: 1;
+  padding: 0 12px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-button {
+  padding: 0 14px;
+  border: none;
+  background-color: transparent;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: darkslateblue;
+  opacity: 75%;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.signup-button,
+.login-button {
+  padding: 6px 14px;
+  border: 1px solid whitesmoke;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.signup-button {
+  background: whitesmoke;
+  color: darkslateblue;
+}
+
+.login-button {
+  background: transparent;
+  color: whitesmoke;
+}
+
+.signup-button:hover {
+  opacity: 50%;
+}
+
+.login-button:hover {
+  opacity: 50%;
 }

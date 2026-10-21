@@ -1,14 +1,50 @@
 
 <header class="header">
-  <button
-    type="button"
-    class="menu-button"
-    aria-label="Open navigation menu"
-    (click)="menuToggle.emit()"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-	<h1>InBetween</h1>
+  <div class="header-left">
+    <button
+      type="button"
+      class="menu-button"
+      aria-label="Open navigation menu"
+      (click)="menuToggle.emit()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <h1>InBetween</h1>
+  </div>
+
+  <div class="header-search">
+    <input
+      type="search"
+      placeholder="Search InBetween"
+      aria-label="Search"
+    />
+    <button
+      type="button"
+      class="search-button"
+      aria-label="Submit search"
+    >
+      Search
+    </button>
+  </div>
+
+  <div class="header-right">
+    <button
+      type="button"
+      class="signup-button"
+      routerLink="/signup"
+    >
+      Sign Up
+    </button>
+
+    <button
+      type="button"
+      class="login-button"
+      routerLink="/signin"
+    >
+      Log In
+    </button>
+  </div>
 </header>
