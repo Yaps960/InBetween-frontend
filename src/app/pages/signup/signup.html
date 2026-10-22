@@ -1,0 +1,75 @@
+
+<main class="auth-page">
+  <a class="brand" routerLink="/">
+    <span>InBetween</span>
+  </a>
+
+  <section class="auth-card">
+    <h2>Create your account</h2>
+    <p class="subtitle">
+      Join InBetween and stay connected.
+    </p>
+
+    <form>
+      <div class="form-group">
+        <label for="name">Display name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          placeholder="Your name"
+          autocomplete="name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Create a password"
+          autocomplete="new-password"
+          minlength="8"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">
+          Confirm password
+        </label>
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          placeholder="Re-enter your password"
+          autocomplete="new-password"
+          required
+        />
+      </div>
+
+      <button class="auth-button" type="submit">
+        Create Account
+      </button>
+    </form>
+
+    <p class="auth-footer">
+      Already have an account?
+      <a routerLink="/signin">Sign in</a>
+    </p>
+  </section>
+</main>

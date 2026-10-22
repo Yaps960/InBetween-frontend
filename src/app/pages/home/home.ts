@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Header } from '../components/header/header';
-import { HamburgerMenu } from '../components/hamburger-menu/hamburger-menu';
-import { FriendsList } from '../components/friends-list/friends-list';
-import { Chatbox } from '../components/chatbox/chatbox';
+import { Header } from '../../components/header/header';
+import { HamburgerMenu } from '../../components/hamburger-menu/hamburger-menu';
+import { FriendsList } from '../../components/friends-list/friends-list';
+import { Chatbox } from '../../components/chatbox/chatbox';
 
 @Component({
   imports: [Header, HamburgerMenu, FriendsList, Chatbox],
