@@ -13,10 +13,18 @@
   </header>
 
   <div class="chat-messages">
+    @for (message of messages; track message.id) {
+      <div class="message">
+        {{ message.text }}
+      </div>
+    } @empty {
+      <p class="empty-chat">No messages yet. Say Hello!</p>
+    }
   </div>
 
-  <form class="chat-input" (submit)="$event.preventDefault()">
+  <form class="chat-input" (submit)="sendMessage($event, messageInput)">
     <input
+      #messageInput
       type="text"
       placeholder="Type a message..."
       aria-label="Message"

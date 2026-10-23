@@ -39,6 +39,10 @@
 .chat-messages {
   flex: 1;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
 }
 
 .chat-input {
@@ -62,4 +66,26 @@
   border-radius: 6px;
   background: white;
   cursor: pointer;
+}
+
+.message {
+  align-self: flex-end;
+  max-width: 85%;
+  padding: 8px 12px;
+  border-radius: 12px 12px 2px 12px;
+  background: #0f172a;
+  color: #e0f2fe;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.empty-chat {
+  margin: auto;
+  color: #888;
+  font-size: 14px;
+  text-align: center;
+}
+
+.chat-input button:hover {
+  background: #f3f4f6;
 }
