@@ -10,29 +10,54 @@
       Sign in to continue to your account.
     </p>
 
-    <form>
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="email">Email address</label>
         <input
           id="email"
-          name="email"
           type="email"
+          formControlName="email"
           placeholder="you@example.com"
           autocomplete="email"
-          required
+          [class.invalid]="
+            signinForm.controls.email.invalid &&
+            signinForm.controls.email.touched
+          "
         />
+
+        @if (
+          signinForm.controls.email.touched &&
+          signinForm.controls.email.hasError('required')
+        ) {
+          <small class="error-message">Email is required.</small>
+        } @else if (
+          signinForm.controls.email.touched &&
+          signinForm.controls.email.hasError('email')
+        ) {
+          <small class="error-message">Enter a valid email address.</small>
+        }
       </div>
 
       <div class="form-group">
         <label for="password">Password</label>
         <input
           id="password"
-          name="password"
           type="password"
+          formControlName="password"
           placeholder="Enter your password"
           autocomplete="current-password"
-          required
+          [class.invalid]="
+            signinForm.controls.password.invalid &&
+            signinForm.controls.password.touched
+          "
         />
+
+        @if (
+          signinForm.controls.password.touched &&
+          signinForm.controls.password.hasError('required')
+        ) {
+          <small class="error-message">Password is required.</small>
+        }
       </div>
 
       <div class="form-options">
@@ -41,9 +66,19 @@
         </a>
       </div>
 
-      <button class="auth-button" type="submit">
+      <button 
+        class="auth-button" 
+        type="submit"
+        [disabled]="signinForm.invalid && submitted"
+      >
         Sign In
       </button>
+
+      @if (submitted && signinForm.valid) {
+        <p class="success-message">
+          Form validated successfully.
+        </p>
+      }
     </form>
 
     <p class="auth-footer">

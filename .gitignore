@@ -1,2 +1,6 @@
-.angular/
-node_modules/
+/.angular/
+/node_modules/
+/dist/
+.idea/
+.vscode/
+npm-debug.log*

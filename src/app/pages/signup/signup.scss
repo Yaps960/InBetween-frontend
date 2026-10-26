@@ -123,6 +123,24 @@ a:hover {
   margin-left: 4px;
 }
 
+.error-message {
+  display: block;
+  margin-top: 2px;
+  color: red;
+  font-size: 12px;
+}
+
+.form-group input.invalid,
+.form-group input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.success-message {
+  margin: 16px 0 0;
+  color: green;
+  font-size: 14px;
+}
+
 @media (max-width: 480px) {
   .auth-card {
     padding: 24px;
