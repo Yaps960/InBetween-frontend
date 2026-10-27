@@ -31,20 +31,30 @@
   </div>
 
   <div class="header-right">
-    <button
-      type="button"
-      class="signup-button"
-      routerLink="/signup"
-    >
-      Sign Up
-    </button>
+    @if (authService.isSignedIn) {
+      <button
+        type="button"
+        class="logout-button"
+        (click)="authService.signOut()"
+      >
+        Log Out
+      </button>
+    } @else {
+      <button
+        type="button"
+        class="signup-button"
+        routerLink="/signup"
+      >
+        Sign Up
+      </button>
 
-    <button
-      type="button"
-      class="login-button"
-      routerLink="/signin"
-    >
-      Log In
-    </button>
+      <button
+        type="button"
+        class="login-button"
+        routerLink="/signin"
+      >
+        Log In
+      </button>
+    }
   </div>
 </header>

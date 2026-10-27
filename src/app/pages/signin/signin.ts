@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   FormBuilder,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   imports: [RouterLink, ReactiveFormsModule],
@@ -18,7 +19,11 @@ export class Signin {
 
   signinForm;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.signinForm = this.fb.nonNullable.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -33,7 +38,7 @@ export class Signin {
       return;
     }
 
-    // Authentication is yet to be implemented.
-    console.log('Sign-in form is valid');
+    this.authService.signIn();
+    this.router.navigate(['/home']);
   }
 }

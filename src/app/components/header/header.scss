@@ -79,7 +79,8 @@ h1 {
 }
 
 .signup-button,
-.login-button {
+.login-button,
+.logout-button {
   padding: 6px 14px;
   border: 1px solid whitesmoke;
   border-radius: 7px;
@@ -87,7 +88,8 @@ h1 {
   cursor: pointer;
 }
 
-.signup-button {
+.signup-button,
+.logout-button {
   background: whitesmoke;
   color: darkslateblue;
 }
@@ -97,10 +99,8 @@ h1 {
   color: whitesmoke;
 }
 
-.signup-button:hover {
-  opacity: 50%;
-}
-
-.login-button:hover {
+.signup-button:hover,
+.login-button:hover,
+.logout-button:hover {
   opacity: 50%;
 }

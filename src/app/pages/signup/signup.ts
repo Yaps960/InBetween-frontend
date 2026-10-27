@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   AbstractControl,
   FormBuilder,
@@ -8,6 +8,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 const passwordsMatch: ValidatorFn = (
   control: AbstractControl,
@@ -36,7 +37,11 @@ export class Signup {
 
   signupForm;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.signupForm = this.fb.nonNullable.group(
       {
         name: ['', Validators.required],
@@ -59,7 +64,7 @@ export class Signup {
       return;
     }
 
-    // Account creation is yet to be implemented.
-    console.log('Sign-up form is valid');
+    this.authService.signIn();
+    this.router.navigate(['/home']);
   }
 }

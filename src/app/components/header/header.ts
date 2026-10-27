@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -10,4 +11,6 @@ import { RouterLink } from '@angular/router';
 })
 export class Header {
   @Output() menuToggle = new EventEmitter<void>();
+
+  constructor(public authService: AuthService) {}
 }
