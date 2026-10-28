@@ -21,12 +21,14 @@
   />
 }
 
-<button
-  class="friends-toggle"
-  type="button"
-  aria-label="Open friends list"
-  [attr.aria-expanded]="isFriendsListOpen"
-  (click)="toggleFriendsList()"
->
-  <span aria-hidden="true">☰</span>
-</button>
+@if (authService.isSignedIn) {
+  <button
+    class="friends-toggle"
+    type="button"
+    aria-label="Open friends list"
+    [attr.aria-expanded]="isFriendsListOpen"
+    (click)="toggleFriendsList()"
+  >
+    <span aria-hidden="true">☰</span>
+  </button>
+}

@@ -3,6 +3,7 @@ import { Header } from '../../components/header/header';
 import { HamburgerMenu } from '../../components/hamburger-menu/hamburger-menu';
 import { FriendsList } from '../../components/friends-list/friends-list';
 import { Chatbox } from '../../components/chatbox/chatbox';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   imports: [Header, HamburgerMenu, FriendsList, Chatbox],
@@ -10,10 +11,13 @@ import { Chatbox } from '../../components/chatbox/chatbox';
   styleUrl: './home.scss',
   templateUrl: './home.html',
 })
+
 export class Home {
   isMenuOpen = false;
   isFriendsListOpen = false;
   selectedFriend: string | null = null;
+
+  constructor (public authService: AuthService) {}
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
