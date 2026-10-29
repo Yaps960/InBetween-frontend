@@ -1,10 +1,7 @@
 
 .chatbox {
-  position: fixed;
-  right: 24px;
-  bottom: 88px;
-  z-index: 16;
-  width: min(340px, calc(100vw - 32px));
+  position: relative;
+  width: 340px;
   height: 420px;
   display: flex;
   flex-direction: column;

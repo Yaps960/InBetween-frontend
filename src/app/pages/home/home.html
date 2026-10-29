@@ -10,16 +10,26 @@
 @if (isFriendsListOpen) {
   <app-friends-list
     (selectFriend)="openChat($event)"
-    (closeFriends)="toggleFriendsList()"
+    (closeFriends="toggleFriendsList()"
   />
 }
 
 @if (selectedFriend) {
   <app-chatbox
-    [friend]="selectedFriend"
-    (closeChat)="closeChat()"
+    [friend]="friend"
+    (closeChat)="closeChat(friend)"
   />
 }
+
+<div class="chat-windows">
+  @for (friend of openChats; track friend; let first = $first) {
+    <app-chatbox
+      [friend]="friend"
+      [class.first-chatbox]="first"
+      (closeChat)="closeChat(friend)"
+    />
+  }
+</div>
 
 @if (authService.isSignedIn) {
   <button

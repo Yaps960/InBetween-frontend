@@ -10,5 +10,5 @@ export class FriendsList {
   @Output() selectFriend = new EventEmitter<string>();
   @Output() closeFriends = new EventEmitter<void>();
 
-  friends: string[] = [];
+  friends: string[] = ["Irelia", "Gnar"];
 }

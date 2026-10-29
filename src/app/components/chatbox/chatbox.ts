@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Input, input } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   imports: [],

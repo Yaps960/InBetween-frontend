@@ -21,3 +21,20 @@
   cursor: pointer;
   z-index: 10;
 }
+
+.first-chatbox {
+  margin-right: min(300px, calc(100vw - 32px));
+}
+
+.chat-windows {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  gap: 12px;
+  max-width: calc(100vw - 48px);
+  overflow-x: auto;
+  padding: 8px;
+}

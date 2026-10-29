@@ -15,7 +15,7 @@ import { AuthService } from '../../services/auth.service';
 export class Home {
   isMenuOpen = false;
   isFriendsListOpen = false;
-  selectedFriend: string | null = null;
+  openChats: string[] = [];
 
   constructor (public authService: AuthService) {}
 
@@ -27,11 +27,17 @@ export class Home {
     this.isFriendsListOpen = !this.isFriendsListOpen;
   }
 
-  openChat(friend: string) {
-    this.selectedFriend = friend;
+  openChat(friend: string): void {
+    if (this.openChats.includes(friend)) {
+      return;
+    }
+
+    this.openChats = [...this.openChats, friend];
   }
 
-  closeChat() {
-    this.selectedFriend = null;
+  closeChat(friend: string): void {
+    this.openChats = this.openChats.filter(
+      (openFriend) => openFriend !== friend
+    );
   }
 }
