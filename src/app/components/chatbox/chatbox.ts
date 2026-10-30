@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChatService, ChatMessage } from '../../services/chat.service';
 
 @Component({
   imports: [],
@@ -6,16 +7,19 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
   styleUrl: './chatbox.scss',
   templateUrl: './chatbox.html',
 })
-export class Chatbox {
+export class Chatbox implements OnChanges {
   @Input() friend = '';
   @Output() closeChat = new EventEmitter<void>();
 
-  messages: {
-    id: number,
-    text: string
-  }[] = [];
+  messages: ChatMessage[] = [];
 
-  private nextMessageId = 0;
+  constructor(private chatService: ChatService) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['friend'] && this.friend) {
+      this.messages = this.chatService.getMessages(this.friend);
+    }
+  }
 
   sendMessage(event: SubmitEvent, input: HTMLInputElement): void {
     event.preventDefault();
@@ -26,13 +30,11 @@ export class Chatbox {
       return;
     }
 
-    this.messages.push({
-      id: this.nextMessageId++,
-      text,
-    });
+    this.chatService.sendMessage(this.friend, text);
+
+    this.messages = this.chatService.getMessages(this.friend);
 
     input.value = '';
-    
     input.focus();
   }
 }

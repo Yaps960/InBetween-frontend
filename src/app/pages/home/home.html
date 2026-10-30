@@ -14,13 +14,6 @@
   />
 }
 
-@if (selectedFriend) {
-  <app-chatbox
-    [friend]="friend"
-    (closeChat)="closeChat(friend)"
-  />
-}
-
 <div class="chat-windows">
   @for (friend of openChats; track friend; let first = $first) {
     <app-chatbox
