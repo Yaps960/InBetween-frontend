@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 export interface ChatMessage {
   id: number;
   text: string;
+  timestamp: Date;
 }
 
 @Injectable({
@@ -51,7 +52,8 @@ export class ChatService {
 
     const message: ChatMessage = {
       id: Date.now(),
-      text
+      text,
+      timestamp: new Date()
     };
 
     this.conversations[friend].push(message);

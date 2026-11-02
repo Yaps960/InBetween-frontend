@@ -13,10 +13,24 @@
   </header>
 
   <div class="chat-messages">
-    @for (message of messages; track message.id) {
-      <div class="message">
-        {{ message.text }}
+    @for (message of messages; track message.id; let i = $index) {
+
+      @if (shouldShowTimestamp(message, messages[i - 1])) {
+        <div class="timestamp-separator">
+          <span>{{ formatTime(message.timestamp) }}</span>
+        </div>
+      }
+
+      <div class="message-wrapper">
+        <div class="message">
+          {{ message.text }}
+
+          <span class="message-timestamp">
+            {{ formatDateTime(message.timestamp) }}
+          </span>
+        </div>
       </div>
+
     } @empty {
       <p class="empty-chat">No messages yet. Say Hello!</p>
     }

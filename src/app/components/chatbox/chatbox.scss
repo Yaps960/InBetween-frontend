@@ -65,7 +65,14 @@
   cursor: pointer;
 }
 
+.message-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 100%;
+}
+
 .message {
+  position: relative;
   align-self: flex-end;
   max-width: 85%;
   padding: 8px 12px;
@@ -74,6 +81,50 @@
   color: #e0f2fe;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
+}
+
+.message-timestamp {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 5px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.message:hover .message-timestamp {
+  opacity: 1;
+  visibility: visible;
+}
+
+.timestamp-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 12px 0;
+  color: #888;
+  font-size: 11px;
+}
+
+.timestamp-separator::before,
+.timestamp-separator::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.timestamp-separator span {
+  white-space: nowrap;
 }
 
 .empty-chat {
