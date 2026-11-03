@@ -12,8 +12,17 @@
     </button>
   </header>
 
+  <div class="search-container">
+    <input
+      type="search"
+      placeholder="Search friends..."
+      aria-label="Search friends"
+      [(ngModel)]="searchQuery"
+    />
+  </div>
+
   <div class="friends-content">
-    @for (friend of friends; track friend) {
+    @for (friend of filteredFriends; track friend) {
       <button
         class="friend-item"
         type="button"
