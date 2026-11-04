@@ -10,6 +10,12 @@
   background: white;
   box-shadow: 0 4px 20px rgb(0 0 0 / 10%);
   overflow: hidden;
+
+  transition: height 0.3s ease;
+}
+
+.chatbox.collapsed {
+  height: 49px;
 }
 
 .chat-header {
@@ -17,7 +23,17 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
+  flex-shrink: 0;
   border-bottom: 1px solid #eee;
+  transition: background 0.2 ease;
+}
+
+.chat-header.clickable {
+  cursor: pointer;
+}
+
+.chat-header.clickable:hover {
+  background: #f8fafc
 }
 
 .chat-header h2 {
@@ -31,6 +47,22 @@
   background: transparent;
   font-size: 24px;
   cursor: pointer;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-actions button {
+  cursor: pointer;
+}
+
+.toggle-button,
+.close-button {
+  position: relative;
+  z-index: 1;
 }
 
 .chat-messages {

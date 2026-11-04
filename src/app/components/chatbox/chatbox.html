@@ -1,51 +1,73 @@
 
-<section class="chatbox">
-  <header class="chat-header">
+<section class="chatbox" [class.collapsed]="isCollapsed">
+  <header 
+    class="chat-header"
+    (click)="toggleChat()"
+    [class.clickable]="true"
+    role="button"
+    tabindex="0"
+    (keydown.enter)="toggleChat()"
+    (keydown.space)="toggleChat(); $event.preventDefault()"
+    [attr.aria-expanded]="!isCollapsed"
+  >
     <h2>{{ friend }}</h2>
 
-    <button
-      type="button"
-      aria-label="Close chat"
-      (click)="closeChat.emit()"
-    >
-      ×
-    </button>
+    <div class="header-actions">
+      <button
+        type="button"
+        class="toggle-button"
+        [attr.aria-label]="isCollapsed ? 'Expand chat' : 'Minimize chat'"
+        (click)="toggleChat(); $event.stopPropagation()"
+      >
+        {{ isCollapsed ? '+' : '-' }}
+      </button>
+
+      <button
+        type="button"
+        aria-label="Close chat"
+        (click)="closeChat.emit()"
+      >
+        ×
+      </button>
+    </div>
   </header>
 
-  <div class="chat-messages">
-    @for (message of messages; track message.id; let i = $index) {
+  @if (!isCollapsed) {
+    <div class="chat-messages">
+      @for (message of messages; track message.id; let i = $index) {
 
-      @if (shouldShowTimestamp(message, messages[i - 1])) {
-        <div class="timestamp-separator">
-          <span>{{ formatTime(message.timestamp) }}</span>
+        @if (shouldShowTimestamp(message, messages[i - 1])) {
+          <div class="timestamp-separator">
+            <span>{{ formatTime(message.timestamp) }}</span>
+          </div>
+        }
+
+        <div class="message-wrapper">
+          <div class="message">
+            {{ message.text }}
+
+            <span class="message-timestamp">
+              {{ formatDateTime(message.timestamp) }}
+            </span>
+          </div>
         </div>
+
+      } @empty {
+        <p class="empty-chat">No messages yet. Say Hello!</p>
       }
+    </div>
 
-      <div class="message-wrapper">
-        <div class="message">
-          {{ message.text }}
+    <form class="chat-input" (submit)="sendMessage($event, messageInput)">
+      <input
+        #messageInput
+        type="text"
+        placeholder="Type a message..."
+        aria-label="Message"
+      />
 
-          <span class="message-timestamp">
-            {{ formatDateTime(message.timestamp) }}
-          </span>
-        </div>
-      </div>
-
-    } @empty {
-      <p class="empty-chat">No messages yet. Say Hello!</p>
-    }
-  </div>
-
-  <form class="chat-input" (submit)="sendMessage($event, messageInput)">
-    <input
-      #messageInput
-      type="text"
-      placeholder="Type a message..."
-      aria-label="Message"
-    />
-
-    <button type="submit" aria-label="Send message">
-      Send
-    </button>
-  </form>
+      <button type="submit" aria-label="Send message">
+        Send
+      </button>
+    </form>
+  }
 </section>

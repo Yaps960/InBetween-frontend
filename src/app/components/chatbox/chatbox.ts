@@ -13,7 +13,13 @@ export class Chatbox implements OnChanges {
 
   messages: ChatMessage[] = [];
 
+  isCollapsed = false;
+
   constructor(private chatService: ChatService) {}
+
+  toggleChat(): void {
+    this.isCollapsed = !this.isCollapsed;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['friend'] && this.friend) {
