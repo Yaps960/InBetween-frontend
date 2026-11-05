@@ -29,6 +29,14 @@ export class ChatService {
 
     try {
       this.conversations = JSON.parse(savedMessages);
+
+      for (const friend in this.conversations) {
+        this.conversations[friend] =
+          this.conversations[friend].map(messages => ({
+            ...messages,
+            timestamp: new Date(messages.timestamp)
+          }));
+      }
     } catch {
       this.conversations = {};
     }
@@ -57,6 +65,26 @@ export class ChatService {
     };
 
     this.conversations[friend].push(message);
+
+    this.saveMessages();
+  }
+
+  editMessage(
+    friend: string,
+    messageId: number | string,
+    newText: string
+  ): void {
+    const messages = this.conversations[friend];
+
+    const message = messages.find(
+      m => m.id === messageId
+    );
+
+    if (!message) {
+      return;
+    }
+
+    message.text = newText;
 
     this.saveMessages();
   }

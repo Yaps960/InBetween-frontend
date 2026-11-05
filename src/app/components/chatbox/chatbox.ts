@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ChatService, ChatMessage } from '../../services/chat.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  imports: [],
+  imports: [FormsModule],
   selector: 'app-chatbox',
   styleUrl: './chatbox.scss',
   templateUrl: './chatbox.html',
@@ -76,5 +77,48 @@ export class Chatbox implements OnChanges {
       hour: '2-digit',
       minute: '2-digit'
     });
+  }
+
+  editingMessageId: number | string | null = null;
+  editedText = '';
+  activeMenuId: number | string | null = null;
+
+  toggleMessageMenu(
+    messageId: number | string,
+    event: MouseEvent
+  ): void {
+    event.stopPropagation();
+
+    this.activeMenuId =
+      this.activeMenuId === messageId ? null : messageId;
+  }
+
+  editMessage(message: ChatMessage): void {
+    this.editingMessageId = message.id;
+    this.editedText = message.text;
+    this.activeMenuId = null;
+  }
+
+  cancelEdit(): void {
+    this.editingMessageId = null;
+    this.editedText = '';
+  }
+
+  saveEdit(messageId: number | string): void {
+    const text = this.editedText.trim();
+
+    if (!text) {
+      return;
+    }
+
+    this.chatService.editMessage(
+      this.friend,
+      messageId,
+      text
+    );
+
+    this.messages = this.chatService.getMessages(this.friend);
+
+    this.cancelEdit();
   }
 }

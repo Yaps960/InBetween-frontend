@@ -43,12 +43,62 @@
         }
 
         <div class="message-wrapper">
-          <div class="message">
-            {{ message.text }}
+          <div class="message-container">
+            <div class="message-menu-wrapper">
+              <button
+                type="button"
+                class="message-menu-button"
+                aria-label="Message options"
+                (click)="toggleMessageMenu(message.id, $event)"
+              >
+                ⋯
+              </button>
 
-            <span class="message-timestamp">
-              {{ formatDateTime(message.timestamp) }}
-            </span>
+              @if (activeMenuId === message.id) {
+                <div class="message-menu">
+                  <button
+                    type="button"
+                    (click)="editMessage(message); $event.stopPropagation()"
+                  >
+                    Edit
+                  </button>
+                </div>
+              }
+            </div>
+
+            <div class="message">
+              @if (editingMessageId === message.id) {
+                <div class="edit-container">
+                  <textarea
+                    [(ngModel)]="editedText"
+                    class="edit-message-input"
+                    aria-label="Edit message"
+                  ></textarea>
+
+                  <div class="edit-actions">
+                    <button
+                      type="button"
+                      (click)="saveEdit(message.id)"
+                    >
+                      Save
+                    </button>
+
+                    <button
+                      type="button"
+                      (click)="cancelEdit()"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              } @else {
+                {{ message.text }}
+              }
+
+              <span class="message-timestamp">
+                {{ formatDateTime(message.timestamp) }}
+              </span>
+            </div>
           </div>
         </div>
 
