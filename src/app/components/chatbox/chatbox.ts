@@ -121,4 +121,23 @@ export class Chatbox implements OnChanges {
 
     this.cancelEdit();
   }
+
+  deleteMessage(messageId: number | string): void {
+    const confirmed = confirm(
+      'Are you sure you want to delete this message?'
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    this.chatService.deleteMessage(
+      this.friend,
+      messageId
+    );
+
+    this.messages = this.chatService.getMessages(this.friend);
+
+    this.activeMenuId = null;
+  }
 }

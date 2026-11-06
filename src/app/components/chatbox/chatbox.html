@@ -62,6 +62,14 @@
                   >
                     Edit
                   </button>
+
+                  <button
+                    type="button"
+                    class="delete-menu-button"
+                    (click)="deleteMessage(message.id); $event.stopPropagation()"
+                  >
+                    Delete
+                  </button>
                 </div>
               }
             </div>

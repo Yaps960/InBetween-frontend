@@ -88,4 +88,21 @@ export class ChatService {
 
     this.saveMessages();
   }
+
+  deleteMessage(
+    friend: string,
+    messageId: number | string
+  ): void {
+    const messages = this.conversations[friend];
+
+    if (!messages) {
+      return;
+    }
+
+    this.conversations[friend] = messages.filter(
+      message => message.id !== messageId
+    );
+
+    this.saveMessages();
+  }
 }
