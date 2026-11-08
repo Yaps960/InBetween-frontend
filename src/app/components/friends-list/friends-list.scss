@@ -2,10 +2,10 @@
 .friends-panel {
   position: fixed;
   right: 24px;
-  bottom: 88px;
+  bottom: 24px;
   z-index: 1;
   width: min(300px, calc(100vw - 32px));
-  height: 360px;
+  height: 420px;
   display: flex;
   flex-direction: column;
   border: 1px solid #ddd;
