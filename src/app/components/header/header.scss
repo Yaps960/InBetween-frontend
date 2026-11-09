@@ -1,75 +1,101 @@
 
 .header {
-  height: 60px;
+  height: 48px;
+  padding: 6px 28px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 24px;
-  background: darkslateblue;
+  background: linear-gradient(
+    120deg,
+    #35205f,
+    #50328a
+  );
+  box-shadow: 0 3px 12px rgba(40, 20, 75, 0.2);
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .menu-button {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   border: none;
+  border-radius: 10px;
   background: transparent;
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.menu-button:hover {
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .menu-button span {
   display: block;
-  width: 20px;
+  width: 21px;
   height: 3px;
-  background: whitesmoke;
+  border-radius: 5px;
+  background: white;
 }
 
 h1 {
   margin: 0;
-	color: whitesmoke;
-  font-size: 22px;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
 }
 
 .header-search {
   display: flex;
   flex: 1;
-  height: 24px;
+  height: 36px;
   max-width: 500px;
-  border-radius: 3px;
+  border: 1px solid #e5def2;
+  border-radius: 18px;
   margin: 0 auto;
-  background-color: aliceblue;
+  background: white;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .header-search input {
   flex: 1;
-  padding: 0 12px;
+  min-width: 0;
+  padding: 0 16px;
   border: none;
-  background-color: transparent;
   outline: none;
+  background: transparent;
+  color: #35205f;
   font-size: 14px;
 }
 
+.header-search input::placeholder {
+  color: #9990aa;
+}
+
 .search-button {
-  padding: 0 14px;
+  padding: 0 22px;
   border: none;
-  background-color: transparent;
+  border-radius: 0;
+  background: #7653b5;
+  color: white;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .search-button:hover {
-  background-color: darkslateblue;
-  opacity: 75%;
+  background: #604096;
 }
 
 .header-right {
@@ -81,26 +107,32 @@ h1 {
 .signup-button,
 .login-button,
 .logout-button {
-  padding: 6px 14px;
-  border: 1px solid whitesmoke;
-  border-radius: 7px;
+  padding: 9px 18px;
+  border: 1px solid transparent;
+  border-radius: 9px;
   font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .signup-button,
 .logout-button {
-  background: whitesmoke;
-  color: darkslateblue;
+  background: white;
+  color: #50328a;
+}
+
+.signup-button:hover,
+.logout-button:hover {
+  background: #eee7fa;
 }
 
 .login-button {
   background: transparent;
-  color: whitesmoke;
+  border-color: #c7b7e4;
+  color: white;
 }
 
-.signup-button:hover,
-.login-button:hover,
-.logout-button:hover {
-  opacity: 50%;
+.login-button:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
