@@ -19,7 +19,7 @@
   background: white;
   color: #222;
   cursor: pointer;
-  z-index: 10;
+  z-index: 1;
 }
 
 .chat-windows {
@@ -42,5 +42,33 @@
     .first-chatbox {
       margin-right: min(300px, calc(100vw - 32px));
     }
+  }
+}
+
+.posts-container {
+  width: 100%;
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.post-card {
+  padding: 20px;
+  border: 1px solid #e5def2;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 3px 12px rgba(40, 20, 75, 0.08);
+
+  p {
+    margin: 18px 0 4px;
+    color: #35205f;
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
   }
 }

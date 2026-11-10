@@ -106,7 +106,8 @@ h1 {
 
 .signup-button,
 .login-button,
-.logout-button {
+.logout-button,
+.post-button {
   padding: 9px 18px;
   border: 1px solid transparent;
   border-radius: 9px;
@@ -117,7 +118,8 @@ h1 {
 }
 
 .signup-button,
-.logout-button {
+.logout-button,
+.post-button {
   background: white;
   color: #50328a;
 }

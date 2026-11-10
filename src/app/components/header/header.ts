@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class Header {
   @Output() menuToggle = new EventEmitter<void>();
+  @Output() postToggle = new EventEmitter<void>();
 
   constructor(public authService: AuthService) {}
 }

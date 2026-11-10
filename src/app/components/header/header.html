@@ -34,6 +34,14 @@
     @if (authService.isSignedIn) {
       <button
         type="button"
+        class="post-button"
+        (click)="postToggle.emit()"
+      >
+        +
+      </button>
+
+      <button
+        type="button"
         class="logout-button"
         (click)="authService.signOut()"
       >

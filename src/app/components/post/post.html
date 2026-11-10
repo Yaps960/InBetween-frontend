@@ -1,0 +1,38 @@
+<div class="post-overlay" (click)="closePost.emit()">
+  <div class="post-modal" (click)="$event.stopPropagation()">
+
+    <div class="post-header">
+      <h2>Create a post</h2>
+
+      <button
+        type="button"
+        class="close-button"
+        (click)="closePost.emit()"
+        aria-label="Close"
+      >
+        &times;
+      </button>
+    </div>
+
+    <div class="post-body">
+      <textarea
+        [value]="postContent"
+        (input)="postContent = $any($event.target).value"
+        placeholder="What's on your mind?"
+        rows="6"
+      ></textarea>
+    </div>
+
+    <div class="post-footer">
+      <button
+        type="button"
+        class="publish-button"
+        [disabled]="!postContent.trim()"
+        (click)="submitPost()"
+      >
+        Post
+      </button>
+    </div>
+
+  </div>
+</div>

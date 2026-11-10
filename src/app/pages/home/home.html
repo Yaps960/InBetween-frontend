@@ -1,10 +1,27 @@
-<app-header (menuToggle)="toggleMenu()" />
+<app-header 
+  (menuToggle)="toggleMenu()"
+  (postToggle)="togglePost()" 
+/>
 
 <main class="home-content">
+  <div class="posts-container">
+    @for (post of posts; track post.id) {
+      <article class="post-card">
+        <p>{{ post.content }}</p>
+      </article>
+    }
+  </div>
 </main>
 
 @if (isMenuOpen) {
   <app-hamburger-menu (closeMenu)="toggleMenu()" />
+}
+
+@if (isPostOpen) {
+  <app-post 
+    (closePost)="togglePost()"
+    (postSubmit)="addPost($event)" 
+  />
 }
 
 @if (isFriendsListOpen) {
