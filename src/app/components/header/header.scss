@@ -47,12 +47,13 @@
   background: white;
 }
 
-h1 {
+a {
   margin: 0;
   color: white;
   font-size: 24px;
   font-weight: 700;
   letter-spacing: 0.3px;
+  text-decoration: none;
 }
 
 .header-search {
@@ -105,9 +106,7 @@ h1 {
 }
 
 .signup-button,
-.login-button,
-.logout-button,
-.post-button {
+.login-button {
   padding: 9px 18px;
   border: 1px solid transparent;
   border-radius: 9px;
@@ -117,15 +116,12 @@ h1 {
   transition: all 0.2s ease;
 }
 
-.signup-button,
-.logout-button,
-.post-button {
+.signup-button {
   background: white;
   color: #50328a;
 }
 
-.signup-button:hover,
-.logout-button:hover {
+.signup-button:hover {
   background: #eee7fa;
 }
 
@@ -137,4 +133,100 @@ h1 {
 
 .login-button:hover {
   background: rgba(255, 255, 255, 0.12);
+}
+
+.post-button,
+.dropdown-button {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: #50328a;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.post-button {
+  border-radius: 9px;
+  font-size: 24px;
+}
+
+.dropdown-button {
+  border-radius: 50%;
+}
+
+.dropdown-button svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.profile-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  width: 180px;
+  padding: 6px;
+
+  background: white;
+  border: 1px solid #e5def2;
+  border-radius: 10px;
+
+  box-shadow: 0 6px 18px rgba(40, 20, 75, 0.18);
+
+  z-index: 1000;
+  animation: dropdownFade 0.15s ease;
+}
+
+.dropdown-menu button {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 40px;
+  padding: 0 12px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: transparent;
+  color: #35205f;
+
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: #eee7fa;
+  }
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

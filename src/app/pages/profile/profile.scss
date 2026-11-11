@@ -1,0 +1,136 @@
+.profile-page {
+  min-height: calc(100vh - 60px);
+  padding: 40px 24px;
+
+  background: #f6f3fb;
+}
+
+.profile-card {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 30px;
+
+  background: white;
+  border-radius: 14px;
+
+  box-shadow: 0 3px 14px rgba(40, 20, 75, 0.08);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-avatar {
+  width: 76px;
+  height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #50328a;
+  color: white;
+
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.profile-info h2 {
+  margin: 0 0 6px;
+
+  color: #35205f;
+  font-size: 24px;
+}
+
+.profile-info p {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.profile-divider {
+  height: 1px;
+  margin: 28px 0;
+
+  background: #e5def2;
+}
+
+.profile-details h3 {
+  margin: 0 0 12px;
+
+  color: #35205f;
+  font-size: 18px;
+}
+
+.profile-details p {
+  color: #777;
+  font-size: 14px;
+}
+
+.friends-toggle {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background: white;
+  color: #222;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.chat-windows {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  gap: 12px;
+  max-width: calc(100vw - 48px);
+  overflow-x: auto;
+  padding: 0 8px;
+
+  .first-chatbox {
+    margin-right: 50px;
+  }
+
+  &.friends-open {
+    .first-chatbox {
+      margin-right: min(300px, calc(100vw - 32px));
+    }
+  }
+}
+
+.posts-container {
+  width: 100%;
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.post-card {
+  padding: 20px;
+  border: 1px solid #e5def2;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 3px 12px rgba(40, 20, 75, 0.08);
+
+  p {
+    margin: 18px 0 4px;
+    color: #35205f;
+    font-size: 15px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}

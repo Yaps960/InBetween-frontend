@@ -1,6 +1,6 @@
-<app-header 
+<app-header
   (menuToggle)="toggleMenu()"
-  (postToggle)="togglePost()" 
+  (postToggle)="togglePost()"
 />
 
 <main class="home-content">
@@ -18,9 +18,9 @@
 }
 
 @if (isPostOpen) {
-  <app-post 
+  <app-post
     (closePost)="togglePost()"
-    (postSubmit)="addPost($event)" 
+    (postSubmit)="addPost($event)"
   />
 }
 

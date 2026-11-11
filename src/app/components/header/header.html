@@ -12,7 +12,9 @@
       <span></span>
     </button>
 
-    <h1>InBetween</h1>
+    <a href="/"q>
+      InBetween
+    </a>
   </div>
 
   <div class="header-search">
@@ -40,13 +42,49 @@
         +
       </button>
 
-      <button
-        type="button"
-        class="logout-button"
-        (click)="authService.signOut()"
-      >
-        Log Out
-      </button>
+      <div class="profile-dropdown">
+        <button
+          type="button"
+          class="dropdown-button"
+          aria-label="Open profile menu"
+          [attr.aria-expanded]="isDropdownOpen"
+          (click)="dropdownToggle()"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 32 32"
+            fill="#50328a"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M16 15.503A5.041 5.041 0 1 0 16 5.42a5.041 5.041 0 0 0 0 10.083zm0 2.215c-6.703 0-11 3.699-11 5.5v3.363h22v-3.363c0-2.178-4.068-5.5-11-5.5z"/>
+          </svg>
+        </button>
+
+        @if (isDropdownOpen) {
+          <div class="dropdown-menu">
+            <button
+              type="button"
+              routerLink="/profile"
+              (click)="dropdownToggle()"
+            >
+              Profile
+            </button>
+
+            <button
+              type="button"
+              (click)="authService.signOut()"
+            >
+              Log Out
+            </button>
+          </div>
+        }
+      </div>
     } @else {
       <button
         type="button"

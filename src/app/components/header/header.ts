@@ -10,8 +10,14 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './header.html',
 })
 export class Header {
+  isDropdownOpen = false;
+
   @Output() menuToggle = new EventEmitter<void>();
   @Output() postToggle = new EventEmitter<void>();
 
   constructor(public authService: AuthService) {}
+
+  dropdownToggle() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
 }
