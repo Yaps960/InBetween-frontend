@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Header } from '../../components/header/header';
 import { HamburgerMenu } from '../../components/hamburger-menu/hamburger-menu';
 import { FriendsList } from '../../components/friends-list/friends-list';
@@ -12,7 +13,7 @@ interface PostData {
 }
 
 @Component({
-  imports: [Header, HamburgerMenu, FriendsList, Chatbox, Post],
+  imports: [FormsModule, Header, HamburgerMenu, FriendsList, Chatbox, Post],
   selector: 'app-home',
   styleUrl: './home.scss',
   templateUrl: './home.html',
@@ -25,6 +26,10 @@ export class Home implements OnInit{
 
   openChats: string[] = [];
   posts: PostData[] = [];
+
+  editingPostId: number | null = null;
+  editedContent = '';
+  activeMenuId: number | null = null;
 
   private readonly storageKey = 'home-posts';
 
@@ -60,6 +65,70 @@ export class Home implements OnInit{
     );
 
     this.isPostOpen = false;
+  }
+
+  togglePostMenu(
+    postId: number,
+    event: MouseEvent
+  ): void {
+    event.stopPropagation();
+
+    this.activeMenuId =
+      this.activeMenuId === postId ? null : postId;
+  }
+
+  editPost(post: PostData): void {
+    this.editingPostId = post.id;
+    this.editedContent = post.content;
+
+    this.activeMenuId = null;
+  }
+
+  cancelEdit(): void {
+    this.editingPostId = null;
+    this.editedContent = '';
+  }
+
+  saveEdit(postId: number): void {
+    const content = this.editedContent.trim();
+
+    if (!content) {
+      return;
+    }
+
+    this.posts = this.posts.map(post =>
+      post.id === postId
+        ? { ...post, content: content }
+        : post
+    );
+
+    localStorage.setItem(
+      this.storageKey,
+      JSON.stringify(this.posts)
+    );
+
+    this.cancelEdit();
+  }
+
+  deletePost(postId: number): void {
+    const confirmed = confirm(
+      'Are you sure you want to delete this post?'
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    this.posts = this.posts.filter(
+      post => post.id !== postId
+    );
+
+    localStorage.setItem(
+      this.storageKey,
+      JSON.stringify(this.posts)
+    );
+
+    this.activeMenuId = null;
   }
 
   toggleMenu() {

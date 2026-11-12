@@ -6,9 +6,71 @@
 <main class="home-content">
   <div class="posts-container">
     @for (post of posts; track post.id) {
-      <article class="post-card">
-        <p>{{ post.content }}</p>
-      </article>
+      <div class="post-wrapper">
+
+        <div class="post-menu-wrapper">
+          <button
+            type="button"
+            class="post-menu-button"
+            aria-label="Post options"
+            (click)="togglePostMenu(post.id, $event)"
+          >
+            ⋯
+          </button>
+
+          @if (activeMenuId === post.id) {
+            <div class="post-menu">
+              <button
+                type="button"
+                (click)="editPost(post); $event.stopPropagation()"
+              >
+                Edit
+              </button>
+
+              <button
+                type="button"
+                class="delete-menu-button"
+                (click)="deletePost(post.id); $event.stopPropagation()"
+              >
+                Delete
+              </button>
+            </div>
+          }
+        </div>
+
+        <article class="post-card">
+
+          @if (editingPostId === post.id) {
+            <div class="edit-container">
+              <textarea
+                [(ngModel)]="editedContent"
+                class="edit-post-input"
+                aria-label="Edit post"
+              ></textarea>
+
+              <div class="edit-actions">
+                <button
+                  type="button"
+                  (click)="saveEdit(post.id)"
+                >
+                  Save
+                </button>
+
+                <button
+                  type="button"
+                  (click)="cancelEdit()"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          } @else {
+            <p>{{ post.content }}</p>
+          }
+
+        </article>
+
+      </div>
     }
   </div>
 </main>

@@ -57,7 +57,8 @@
 }
 
 .post-card {
-  padding: 20px;
+  position: relative;
+  padding: 20px 45px 20px 20px;
   border: 1px solid #e5def2;
   border-radius: 12px;
   background: white;
@@ -71,4 +72,114 @@
     white-space: pre-wrap;
     overflow-wrap: anywhere;
   }
+}
+
+.post-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.post-menu-wrapper {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+}
+
+.post-menu-button {
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 23px;
+  cursor: pointer;
+  padding: 4px 7px;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.post-wrapper:hover .post-menu-button {
+  opacity: 1;
+}
+
+.post-menu-button:hover {
+  background: #f1f5f9;
+}
+
+.post-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 10;
+  min-width: 110px;
+  padding: 5px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 12%);
+}
+
+.post-menu button {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.post-menu button:hover {
+  background: #f1f5f9;
+}
+
+.post-menu .delete-menu-button {
+  color: #dc2626;
+}
+
+.post-menu .delete-menu-button:hover {
+  background: #fee2e2;
+}
+
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-post-input {
+  width: 100%;
+  min-height: 100px;
+  resize: vertical;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.edit-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background: white;
+  color: #0f172a;
+  font-size: 12px;
+}
+
+.edit-actions button:first-child {
+  background: #2563eb;
+  color: white;
+}
+
+.edit-actions button:hover {
+  opacity: 0.85;
 }
