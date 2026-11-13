@@ -22,11 +22,14 @@
       type="search"
       placeholder="Search InBetween"
       aria-label="Search"
+      [(ngModel)]="searchQuery"
+      (keyup.enter)="submitSearch()"
     />
     <button
       type="button"
       class="search-button"
       aria-label="Submit search"
+      (click)="submitSearch()"
     >
       Search
     </button>

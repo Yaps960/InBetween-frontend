@@ -1,11 +1,12 @@
 <app-header
   (menuToggle)="toggleMenu()"
   (postToggle)="togglePost()"
+  (search)="searchPosts($event)"
 />
 
 <main class="home-content">
   <div class="posts-container">
-    @for (post of posts; track post.id) {
+    @for (post of filteredPosts; track post.id) {
       <div class="post-wrapper">
 
         <div class="post-menu-wrapper">
@@ -71,6 +72,10 @@
         </article>
 
       </div>
+    } @empty {
+      <p class="no-results">
+        No posts found.
+      </p>
     }
   </div>
 </main>

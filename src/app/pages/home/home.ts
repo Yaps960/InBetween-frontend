@@ -27,6 +27,8 @@ export class Home implements OnInit{
   openChats: string[] = [];
   posts: PostData[] = [];
 
+  searchQuery = '';
+
   editingPostId: number | null = null;
   editedContent = '';
   activeMenuId: number | null = null;
@@ -155,5 +157,21 @@ export class Home implements OnInit{
     this.openChats = this.openChats.filter(
       (openFriend) => openFriend !== friend
     );
+  }
+
+  get filteredPosts(): PostData[] {
+    const query = this.searchQuery.toLowerCase().trim();
+
+    if (!query) {
+      return this.posts;
+    }
+
+    return this.posts.filter(post =>
+      post.content.toLowerCase().includes(query)
+    );
+  }
+
+  searchPosts(query: string): void {
+    this.searchQuery = query;
   }
 }
